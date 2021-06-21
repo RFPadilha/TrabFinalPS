@@ -24,6 +24,38 @@ class MNT {//Macro Name Table counter, usada para reconhecer nome de macro
 }
 public class MacroProcessor {
     
+    
+    public static File createNewFile(String fileName){//cria arquivo de output
+        try {
+            File myObj = new File(fileName+".sic");
+            if (myObj.createNewFile()) {
+              System.out.println("File created: " + myObj.getName());
+            } else {
+              System.out.println("File already exists.");
+              File file = new File(fileName+".sic");
+              file.delete();
+              createNewFile(fileName);
+              System.out.println("Old file was deleted.");
+            }
+            return myObj;
+        } catch (IOException e) {
+          System.out.println("An error occurred.");
+          e.printStackTrace();
+        }
+        return null;
+    }
+    
+    public static void appendStrToFile(File fileName, String text){//escreve no arquivo sem criar outro
+        try {
+            BufferedWriter out = new BufferedWriter(new FileWriter(fileName, true));
+            out.write(text);
+            out.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+    
     public static int searchmnt(List<MNT> a, String b) {//procura na tabela de macros
         int i,pos = -1;
         for(i = 0; i < a.size(); i++) {//percorre lista
@@ -33,9 +65,10 @@ public class MacroProcessor {
         return pos;//se -1 é porque não foi encontrado
     }
     public static void main(String[] args) throws Exception {
+        File output = createNewFile("macroProcessorOutput");//arquivo onde será salvo o output do processador de macros
         //lê arquivo de entrada
         //substituir endereço local abaixo por onde o arquivo de texto com as definições de macro a serem testadas
-        BufferedReader r = new BufferedReader(new FileReader("C:\\Users\\ricar\\OneDrive\\Área de Trabalho\\TrabFinalPS\\TrabFinalPS\\input.txt"));
+        BufferedReader r = new BufferedReader(new FileReader("./input.txt"));
         BufferedReader r1 = new BufferedReader(new InputStreamReader(System.in));
         //variáveis
         List<MDT> mdt = new Vector<MDT>();
@@ -88,38 +121,54 @@ public class MacroProcessor {
         }
         //retorna resultados
         System.out.println("\nPASS 1\n");
+        appendStrToFile(output, "PASS 1\n");
         System.out.println("MDT");
+        appendStrToFile(output, "\nMDT");
         for(int i = 0; i < mdt.size(); i++) {
             MDT t = mdt.get(i);
             System.out.println(t.index+" "+t.def);
+            appendStrToFile(output, "\n"+t.index+" "+t.def);
         }
         System.out.println("\nMNT");
+        appendStrToFile(output, "\n\nMNT\n");
         for(int i = 0; i < mnt.size(); i++) {
             MNT t = mnt.get(i);
             System.out.print(t.index+" "+t.name+" "+t.mdtind+"\tALA: ");
+            appendStrToFile(output, t.index+" "+t.name+" "+t.mdtind+"\tALA: ");
             for(int j = 0; j < t.ala.size(); j++) {
                 System.out.print(t.ala.get(j)+" ");
+                appendStrToFile(output,t.ala.get(j)+" ");
             } 
             System.out.println();
+            appendStrToFile(output,"\n");
         }
         //retorna código intermediário
         System.out.println("\nIntermediate code");
-        for(int i = 0; i < isc.size(); i++) System.out.println(isc.get(i));
+        appendStrToFile(output,"\nIntermediate code");
+        for(int i = 0; i < isc.size(); i++) {
+            appendStrToFile(output,"\n"+isc.get(i));
+            System.out.println(isc.get(i));
+        }
         
         
         
         
-        System.out.println("--------------------------------\nPASS 2\n");
+        System.out.println("\n--------------------------------\nPASS 2\n");
+        appendStrToFile(output,"\n\n--------------------------------\nPASS 2\n");
         /* PASS 2 */
         for(int i = 0; i < isc.size(); i++) {//com todo o código que sobrou fora da definição de macro
             String temp[] = isc.get(i).split("\\s+");//separando por caracteres de espaço
             int pos1 = searchmnt(mnt,temp[0]);//procura se a primeira substring é uma definição de macro
-            if(pos1 == -1) System.out.println(isc.get(i));//se não for, retorna índice
+            if(pos1 == -1){
+                System.out.println(isc.get(i));//se não for, retorna índice
+                appendStrToFile(output,isc.get(i)+"\n");
+            }
             else if(pos1 != -1) {//se for uma definição de macro conhecida
                 MNT x = mnt.get(pos1);
                 int mdt_ind = x.mdtind;//recebe índice na mdt
                 String ala1[] = temp[1].split("\\,");//separa argumentos na vírgula
-                //System.out.println(ala1[0] + " " + ala1[1]);
+                System.out.println(ala1[0] + " " + ala1[1]);
+                appendStrToFile(output,ala1[0] + " " + ala1[1]+"\n");
                 StringBuffer ss = new StringBuffer();
                 for(int j = mdt_ind; j < mdt.size(); j++) {//partindo do índice na mdt até o fim
                     flag = false;
@@ -127,12 +176,16 @@ public class MacroProcessor {
                     if(def.equals("MEND")) break;//encerra loop "for" quando encontrar fim da macro
                     else {//enquanto não encontra fim da macro
                         for(int k = 0; k < def.length(); k++) {
-                            if(!flag && def.charAt(k) != '#') System.out.print(def.charAt(k));//imprime instrução até o caracter "#"
+                            if(!flag && def.charAt(k) != '#'){
+                                System.out.print(def.charAt(k));//imprime instrução até o caracter "#"
+                                appendStrToFile(output,String.valueOf(def.charAt(k)));
+                            }
                             else if(!flag && def.charAt(k) == '#') flag = true;//ou encontra início da macro
                             else if(flag && def.charAt(k) == ',') {
                                 //System.out.println(ss.toString());
                                 int pos = Integer.parseInt(ss.toString());
                                 System.out.print(ala1[pos - 1]);//imprime instrução, encerrando antes da vírgula
+                                appendStrToFile(output,ala1[pos-1]);
                                 ss.delete(0, ss.length());//deleta o que existe em ss
                                 flag = false;
                             }
@@ -140,10 +193,12 @@ public class MacroProcessor {
                                 ss.append(def.charAt(k));
                             }
                         }
-                        if(ss.length() > 0) {//termina de imprimir resultado caso termina o arquivo de texto
+                        if(ss.length() > 0) {//termina de imprimir argumentos
                             int pos = Integer.parseInt(ss.toString());
                             System.out.print(ala1[pos - 1]);
+                            appendStrToFile(output,ala1[pos-1]);
                             System.out.println();
+                            appendStrToFile(output,"\n");
                             ss.delete(0, ss.length());
                         }
                     }
