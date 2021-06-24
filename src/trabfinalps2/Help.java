@@ -36,9 +36,9 @@ public class Help extends javax.swing.JFrame {
         Salvar = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jTabbedPane2 = new javax.swing.JTabbedPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         Instr = new javax.swing.JScrollPane();
         InstrArea = new javax.swing.JTextArea();
-        jScrollPane4 = new javax.swing.JScrollPane();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         Sobre = new javax.swing.JScrollPane();
         Licencas = new javax.swing.JScrollPane();
@@ -49,7 +49,7 @@ public class Help extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("68KARS | Ajuda");
+        setTitle("SIC-XE | Ajuda");
         setResizable(false);
 
         jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
@@ -76,36 +76,37 @@ public class Help extends javax.swing.JFrame {
 
         jTabbedPane1.addTab(" Primeiros Passos ", jTabbedPane4);
 
+        jTabbedPane2.addTab("tab1", jScrollPane4);
+
         InstrArea.setEditable(false);
         InstrArea.setColumns(20);
         InstrArea.setFont(new java.awt.Font("Ubuntu", 0, 10)); // NOI18N
         InstrArea.setRows(5);
-        InstrArea.setText("---------------------------------------------------------------------\nObs.: traduçao indisponivel, por hora.\n---------------------------------------------------------------------\n                                                                                                             \n                                          Assembler   Data\nInstruction Description                    Syntax     Size  X N Z V C\n-----------------------                   ---------   ----  ---------\n\nADD      ADD binary                        Dx,Dy       BWL  * * * * *\n                                                                   Dn,<ea>\n\t\t\t\t\t   <ea>,Dn\n\nADDA     ADD binary to An                  Rn,An       -WL  - - - - -\n\t\t\t\t\t   <ea>,An\n\nADDI     ADD Immediate                     #x,Dn       BWL  * * * * *\n\t\t\t\t\t   #x,<ea>\n\t\t\t\t\t   #x,An       -W   - - - - -\n\nADDQ     ADD 3-bit immediate             #<1-8>,Dn     BWL  * * * * *\n\t\t\t\t \t #<1-8>,<ea>\n\t\t\t\t\t #<1-8>,An     -WL  - - - - -\n\nADDX     ADD eXtended                       Dy,Dx      BWL  * * * * *\n                                                                              -(Ay),-(Ax)\n\nAND      Bit-wise AND                      Dx,Dy       BWL  - * * 0 0\n                                                                      <ea>,Dn\n\t\t\t\t\t   Dn,<ea>\n\nANDI     Bit-wise AND with Immediate    #<data>,Dn     BWL  - * * 0 0\n\t\t                    #<data>,<ea>\n\nASL      Arithmetic Shift Left            #<1-8>,Dy    BWL  * * * * *\n                                            \t    Dx,Dy\n                                            \t    <ea>\n\nASR      Arithmetic Shift Right              ...       BWL  * * * * *\n\nBcc      Conditional Branch            Bcc.B <label>   BW-  - - - - -\n                                       \tBcc.W <label>\n\nBCHG     Test a Bit and CHanGe             Dn,<ea>     B-L  - - * - -\n                                        \t           #<data>,<ea>\n\nBCLR     Test a Bit and CLeaR                ...       B-L  - - * - -\n\nBSET     Test a Bit and SET                  ...       B-L  - - * - -\n\nBSR      Branch to SubRoutine          BSR.S <label>   BW-  - - - - -\n                                       \t    BSR.W <label>\n\nBTST     Bit TeST                          Dn,<ea>     B-L  - - * - -\n                                                            #<data>,<ea>\n\nCHK      CHecK Dn Against Bounds           <ea>,Dn     -W-  - * U U U\n\nCLR      CLeaR                              <ea>       BWL  -Dn\n\nCMP      CoMPare                           Dx,Dy       BWL  - * * * *\n\t\t\t\t\t   <ea>,Dn\n\nCMPA     CoMPare Address                   Rn,An       -WL  - * * * *\n\t\t\t\t\t   <ea>,An\n\t\t\t\t\t#<data>,An\n\nCMPI     CoMPare Immediate              #<data>,Dn     BWL  - * * * *\n\t\t\t\t\t#<data>,<ea>\n\nCMPM     CoMPare Memory                  (Ay)+,(Ax)+   BWL  - * * * *\n\nDBcc     Looping Instruction          DBcc Dn,<label>  -W-  - - - - -\n\nDIVS     DIVide Signed                     Dx,Dy       -W-  - * * * 0\n\t\t\t\t\t   <ea>,Dn\n\t\t\t\t\t   #<data>,Dn\n\nDIVU     DIVide Unsigned                   Dx,Dy       -W-  - * * * 0\n\t\t\t\t\t   <ea>,Dn\n\t\t\t\t\t   #<data>,Dn\n\nEOR      Exclusive OR                      Dx,Dy       BWL  - * * 0 0\n\t\t\t\t\t   Dn,<ea>\n\nEORI     Exclusive OR Immediate         #<data>,Dn     BWL  - * * 0 0\n\t\t\t\t\t#<data>,<ea>\n\nEXG      Exchange any two registers         Rx,Ry      --L  - - - - -\n\nEXT      Sign EXTend                         Dn        -WL  - * * 0 0\n\nJMP      JuMP to Affective Address          <ea>            - - - - -\n\nJSR      Jump to SubRoutine                 <ea>            - - - - -\n\nLEA      Load Effective Address            <ea>,An     --L  - - - - -\n\nLSL      Logical Shift Left                 Dx,Dy      BWL  * * * 0 *\n                                          #<1-8>,Dy\n                                            <ea>\n\nLSR      Logical Shift Right                 ...       BWL  * * * 0 *\nMOVE    \t\t\t          Dx,Dy        BWL  - * * 0 0\n\t\t\t\t\t  Rn,Dy        -WL  - * * 0 0\n\t\t\t\t          Dn,<ea>      BWL  - * * 0 0\n\t\t\t\t\t  <ea>,Dn      BWL  - * * 0 0\n\t\t\t\t          <ea>,<ea>    BWL  - * * 0 0\n\t\t\t\t\t  #<data>,Dn   BWL  - * * 0 0\n\t\t\t\t\t  #<data>,<ea> BWL  - * * 0 0\n\nMOVEA    MOVE Address                      Dn,An       -WL  - - - - -\n\t\t\t\t\t   <ea>,An\n\t\t\t\t\t   An,<ea>\n\t\t\t\t\t   #<data>,An\n\nMOVE     To CCR                           <ea>,CCR     -W-  I I I I I\n\nMOVE     To SR                             <ea>,SR     -W-  I I I I I\n\nMOVE     From SR                           SR,<ea>     -W-  - - - - -\n\nMOVE     USP to/from Address Register      USP,An      --L  - - - - -\n                                           An,USP\n\nMOVEM    MOVE Multiple            <register list>,<ea> -WL  - - - - -\n                                  <ea>,<register list>\n\nMOVEQ    MOVE 8-bit immediate         #<-128.+127>,Dn  --L  - * * 0 0\n\nMULS     MULtiply Signed                   Dx,Dy       -W-  - * * 0 0\n\t\t\t\t\t   <ea>,Dn\n\t\t\t\t\t   #<data>,Dn\n\nMULU     MULtiply Unsigned                 Dx,Dy       -W-  - * * 0 0\n\t\t\t\t\t   <ea>,Dn\n\t\t\t\t\t   #<data>,Dn\n\nNEG      NEGate                             Dn         BWL  * * * * *\n\t\t\t\t\t    <ea>\n\nNEGX     NEGate with eXtend                 Dn         BWL  * * * * *\n\t\t\t\t\t    <ea>\n\nNOP      No OPeration                        NOP            - - - - -\n\nNOT      Form one's complement              Dn         BWL  - * * 0 0\n\t\t\t\t\t    <ea>\n\nOR       Bit-wise OR                       <ea>,Dn     BWL  - * * 0 0\n                                           Dn,<ea>\n\t\t\t\t\t   Dx,Dy\n\nORI      Bit-wise OR with Immediate     #<data>,<ea>   BWL  - * * 0 0\n\t\t\t\t\t#<data>,Dn\n\nROL      ROtate Left                      #<1-8>,Dy    BWL  - * * 0 *\n                                            Dx,Dy\n                                            <ea>\n\nROR      ROtate Right                        ...       BWL  - * * 0 *\n\nROXL     ROtate Left with eXtend             ...       BWL  * * * 0 *\n\nROXR     ROtate Right with eXtend            ...       BWL  * * * 0 *\n\nRTE      ReTurn from Exception               RTE            I I I I I\n\nRTR      ReTurn and Restore                  RTR            I I I I I\n\nRTS      ReTurn from Subroutine              RTS            - - - - -\n\nSUBtract SAME as ADDITION      \n\nSWAP     SWAP words of Dn                    Dn        -W-  - * * 0 0\n\nTRAP     Execute TRAP Exception           #<vector>         - - - - -\n\nTRAPV    TRAPV Exception if V-bit Set       TRAPV           - - - - -\n\nTST      TeST for negative or zero          <ea>       BWL  - * * 0 0\n\t\t\t\t\t    Dn\n\nmove.l #228,d7\tTo STOP Execution\n\ntrap   #14\n---------------------------------------------------------------------\n\nSymbol   Meaning\n------   -------\n\n   *     Set according to result of operation\n   -     Not affected\n   0     Cleared\n   1     Set\n   U     Outcome (state after operation) undefined\n   I     Set by immediate data\n\n\nLegend\n------\n   Dn    Data Register        (n is 0-7)\n   An    Address Register     (n is 0-7)\n    b    08-bit constant\n    w    16-bit constant\n    l    32-bit constant\n    x    8-, 16-, 32-bit constant\n   Rn    Any Register, An or Dn\n\n--------------------------------------------------------------------------------\n\n         Condition Codes for Bcc and DBcc Instructions.\n         ---------------------------------------------------\n\n           Condition Codes set after CMP D0,D1 Instruction.\n\nRelationship      Unsigned                         Signed\n------------      --------                         ------\n\nD1 <  D0          CS - Carry Bit Set               LT - Less Than\nD1 <= D0          LS - Lower or Same               LE - Less than or Equal\nD1  = D0          EQ - Equal (Z-bit Set)           EQ - Equal (Z-bit Set)\nD1 != D0          NE - Not Equal (Z-bit Clear)     NE - Not Equal (Z-bit Clear)\nD1 >  D0          HI - HIgher than                 GT - Greater Than\nD1 >= D0          CC - Carry Bit Clear             GE - Greater than or Equal\n\n                  PL - PLus (N-bit Clear)          MI - Minus (N-bit Set)\n                  VC - V-bit Clear (No Overflow)   VS - V-bit Set (Overflow)\n                  RA - BRanch Always\n\nDBcc Only    -     F - Never Terminate (DBRA is an alternate to DBF)\n                   T - Always Terminate\n--------------------------------------------------------------------------------\n");
+        InstrArea.setText("MNEMÔNICO\tOPCODE\tWORDS\tOPERANDOS\tAÇÃO\t\tENDEREÇAM.\nADD\t02\t2\t1\tACC<ACC+opd1\tD/In/Im\nBR\t00\t2\t1\tPC<opd1\t\tD/In\nBRNEG\t05\t2\t1\tPC<opd1, se ACC<0\tD/In\nBRPOS\t01\t2\t1\tPC<opd1, se ACC>0\tD/In\nBRZERO\t04\t2\t1\tPC<opd1, se ACC=0\tD/In\nCALL\t15\t2\t1\t[SP]<PC; PC< opd1\tD/In\n\t\t\t\t{desvio para sub rotina opd1}\nCOPY\t13\t3\t2\topd1<opd2\t\topd1: D/In\n\t\t\t\topd2: D/In/Im\nDIVIDE\t10\t2\t1\tACC<ACC/opd1\tD/In/Im\nLOAD\t03\t2\t1\tACC<opd1\t\tD/In/Im\nMULT\t14\t2\t1\tACC<ACC*opd1\tD/In/Im\nREAD\t12\t2\t1\topd1<input stream\tD/In\nRET\t16\t1\t0\tPC< [SP]\t\t-\n\t\t\t\t{retorno de sub-rotina}\nSTOP\t11\t1\t0\t{término (fim) de execução}\nSTORE\t07\t2\t1\topd1<ACC\t\tD/In\nSUB\t06\t2\t1\tACC<ACC - opd1\tD/In/Im\nWRITE\t08\t2\t1\tOutput stream<opd1\tD/In/Im");
         Instr.setViewportView(InstrArea);
 
         jTabbedPane2.addTab("Instruções", Instr);
-        jTabbedPane2.addTab("tab1", jScrollPane4);
 
-        jTabbedPane1.addTab("Motorola 68K", jTabbedPane2);
+        jTabbedPane1.addTab("SIC-XE - Instruções", jTabbedPane2);
 
         jTabbedPane3.addTab("Sobre", Sobre);
         jTabbedPane3.addTab("Licenças", Licencas);
         jTabbedPane3.addTab("Comandos", Comandos);
         jTabbedPane3.addTab("Historia", Historia);
 
-        jTabbedPane1.addTab("68K.A.R.S.", jTabbedPane3);
+        jTabbedPane1.addTab("SIC-XE - Info", jTabbedPane3);
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Em caso de Bugs encontrados, favor descrever e enviar um email \npara:\n\t-> lgcoelho@inf.ufpel.edu.br\n\t-> \n\t->\n\t->\n\t->\n\t->");
+        jTextArea1.setText(">Favor desconsiderar os bugs, só estamos tentando passar na matéria...");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 510, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

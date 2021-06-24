@@ -110,7 +110,7 @@ public class ProcessadorMacros {
                 f = 0;
                 
                 if (linha2.contains("MACRO")) {// se linha contem definicao de macro
-                    while (!(linha2.contains("MEND"))) {// ignora definicao de macro inteira
+                    while (!(linha2.contains("ENDM"))) {// ignora definicao de macro inteira
                         linha2 = bf2.readLine();
                     }
                     linha2 = bf2.readLine();//le depois da definição da macro

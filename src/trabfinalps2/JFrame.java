@@ -99,7 +99,7 @@ public class JFrame extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("68K Assembler Runtime Simulator");
+        setTitle("SIC-XE - Máquina Hipotética");
         setResizable(false);
 
         jTabbedPane.setBackground(new java.awt.Color(255, 255, 255));
@@ -111,7 +111,7 @@ public class JFrame extends javax.swing.JFrame {
 
         jScrollPane10.setViewportView(EditorPane);
 
-        EditorExe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/execute.png"))); // NOI18N
+        EditorExe.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/execute.png"))); // NOI18N
         EditorExe.setToolTipText("Executar");
         EditorExe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -119,21 +119,21 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        EditorSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/save.png"))); // NOI18N
+        EditorSave.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/save.png"))); // NOI18N
         EditorSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditorSaveActionPerformed(evt);
             }
         });
 
-        EditorClr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/clear.png"))); // NOI18N
+        EditorClr.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/clear.png"))); // NOI18N
         EditorClr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditorClrActionPerformed(evt);
             }
         });
 
-        EditorOpen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/open.png"))); // NOI18N
+        EditorOpen.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/open.png"))); // NOI18N
         EditorOpen.setToolTipText("Abrir no Editor");
         EditorOpen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -205,7 +205,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(335, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Process. de Macros", MacroPane);
@@ -249,7 +249,7 @@ public class JFrame extends javax.swing.JFrame {
         MontadorPaneLayout.setVerticalGroup(
             MontadorPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MontadorPaneLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +290,7 @@ public class JFrame extends javax.swing.JFrame {
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(311, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Ligador", LigadorPane);
@@ -361,14 +361,14 @@ public class JFrame extends javax.swing.JFrame {
                 .addGroup(MaquinaPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Carregador", MaquinaPane);
 
         jTabbedPane.addTab("      Processos      ", jTabbedPane1);
 
-        jButtonExe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/open.png"))); // NOI18N
+        jButtonExe.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/open.png"))); // NOI18N
         jButtonExe.setToolTipText("Abrir e Executar");
         jButtonExe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -376,7 +376,7 @@ public class JFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonClr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/buttons/reset.png"))); // NOI18N
+        jButtonClr.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("buttons/reset.png"))); // NOI18N
         jButtonClr.setToolTipText("Resetar");
         jButtonClr.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -386,7 +386,7 @@ public class JFrame extends javax.swing.JFrame {
 
         Title.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Title.setIcon(new javax.swing.ImageIcon(getClass().getResource("/progsistemas/img/68kas_logo2.png"))); // NOI18N
+        Title.setIcon(new javax.swing.ImageIcon(getClass().getClassLoader().getResource("img/sic_logo2.png")));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -406,10 +406,12 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonExe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonClr)
-                    .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(Title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonExe, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                            .addComponent(jButtonClr))
+                        .addContainerGap())))
         );
 
         jButtonExe.getAccessibleContext().setAccessibleName("Abrir");
@@ -455,8 +457,8 @@ public class JFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
-                .addComponent(jTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -635,7 +637,7 @@ public class JFrame extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JOptionPane.showMessageDialog(null, "Simulador do Motorola 68k v. 1.0", "Bem-vindo!", 1, null);
+                JOptionPane.showMessageDialog(null, "SIC-XE - Trabalho de Programação de Sistemas", "Bem-vindo!", 1, null);
                 new JFrame().setVisible(true);
             }
         });
@@ -658,7 +660,6 @@ public class JFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea MontadorIn;
     private javax.swing.JTextArea MontadorOut;
     private javax.swing.JPanel MontadorPane;
-    private javax.swing.JPanel RegTable2;
     private javax.swing.JLabel Title;
     private javax.swing.JButton jButtonClr;
     private javax.swing.JButton jButtonExe;
