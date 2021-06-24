@@ -17,8 +17,9 @@ public class Instrucoes {
         return opd;//retorna para o programCounter que irá imediatamente executar a subrotina
     }
     
-    public void copy(int opd1, int opd2){
+    public int copy(int opd1, int opd2){
         opd1 = opd2;
+        return opd1;
     }
     
     public int divide(int acc, int opd) {//retorna para o acumulador
@@ -35,9 +36,10 @@ public class Instrucoes {
         return acc;
     }
     
-    public void read(int opd){//operando recebe input de inteiros do console
+    public int read(int opd){//operando recebe input de inteiros do console
         Scanner sc=new Scanner(System.in);
         opd = sc.nextInt();
+        return opd;
     }
     
     public int ret(int opd){
@@ -49,8 +51,9 @@ public class Instrucoes {
         System.exit(1);//encerra execução do programa
     }
     
-    public void store(int opd, int acc){
+    public int store(int opd, int acc){
         opd = acc;
+        return opd;
     }
 
     public int sub(int acc, int opd) {//reap as sub
