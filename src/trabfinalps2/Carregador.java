@@ -17,7 +17,7 @@ public class Carregador extends Instrucoes{
         int aux;
         boolean fim = false; // indica o stop
         FileWriter arqObj = new FileWriter("arquivo_carregado.txt"); // Arquivo criado pelo carregado
-        String[] linhas = arq.split("\n"); // divide a string em linhas
+        String[] linhas = arq.split("\n"); // divide arquivo de entrada em linhas
         String[] linha_unica; // usado para dividir a linha em palavras
         String palavra;
         int palavra_inteiro; // Valor inteiro da palavra
@@ -30,14 +30,14 @@ public class Carregador extends Instrucoes{
         aux = 0;
         for(contador = 0; contador < location_counter.length; contador++){
             location_counter[contador] = aux;
-            linha_unica = linhas[contador].split("\t");
+            linha_unica = linhas[contador].split("\\s+");
             aux += linha_unica.length;
         }// for
         
         // atravessa o código o executando
         for(contador = 0; contador < linhas.length; contador++){
             // Divide as opções das linhas
-            linha_unica = linhas[contador].split("\t");
+            linha_unica = linhas[contador].split("\\s+");
 
             // Resultado das operações
             int resultado;
@@ -84,11 +84,11 @@ public class Carregador extends Instrucoes{
                   }
                   // valor 1 recebe valor do endereço
                   label2 = enderecos.get(palavra);
-                }//if
+                }
                 // Entre 2000 e 7, é valor
                 else if (palavra_inteiro >= 8){
                     label2 = palavra_inteiro;
-                }// else if
+                }
                 // Registradores
                 else{
                     palavra = memoria.getD(palavra_inteiro);
@@ -108,6 +108,28 @@ public class Carregador extends Instrucoes{
                 case "00":
                             resultado = br(label1);
                             entrega_resultado(resultado, palavra_inteiro);
+                            break;
+                // BRNEG
+                case "101":
+                            if(label1<0){
+                                resultado = br(label1);
+                                entrega_resultado(resultado, palavra_inteiro);
+                            }
+                            break;
+                            
+                // BRPOS
+                case "01":
+                            if(label1>0){
+                                resultado = br(label1);
+                                entrega_resultado(resultado, palavra_inteiro);
+                            }
+                            break;
+                //BRZERO
+                case "100":
+                            if(label1==0){
+                                resultado = br(label1);
+                                entrega_resultado(resultado, palavra_inteiro);
+                            }
                             break;
                 // CALL
                 case "10101":
