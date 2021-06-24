@@ -19,9 +19,11 @@ O projeto tinha como objetivo construir um simulador completo de uma máquina vi
 - TabelaDefinicoes: classe auxiliar para manipulação de tabela
 - TabelaSimbolosGlobais: classe auxiliar para manipulação de tabela
 
+
 - ProcessadorMacros: primeiro objeto a ser chamado, define macros baseado no arquivo de entrada
 - Carregador: executa instruções e manipula memória
 - Montador: Utiliza das tabelas e das macros processadas para gerar um arquivo objeto, onde existem somente binários
+
 
 - Principal: o objeto que usa todos os outros para executar o programa inteiro
 - JFrame: definição da interface
