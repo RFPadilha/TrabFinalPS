@@ -36,14 +36,19 @@ public class Help extends javax.swing.JFrame {
         Salvar = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
         Instr = new javax.swing.JScrollPane();
         InstrArea = new javax.swing.JTextArea();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea8 = new javax.swing.JTextArea();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         Sobre = new javax.swing.JScrollPane();
+        jTextArea4 = new javax.swing.JTextArea();
         Licencas = new javax.swing.JScrollPane();
+        jTextArea5 = new javax.swing.JTextArea();
         Comandos = new javax.swing.JScrollPane();
+        jTextArea6 = new javax.swing.JTextArea();
         Historia = new javax.swing.JScrollPane();
+        jTextArea7 = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -58,9 +63,10 @@ public class Help extends javax.swing.JFrame {
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
+        jTextArea2.setText("1. Carregar os arquivos de entrada com o botão com ícone de \"pasta\".\n2. Use o botão com ícone de \"seta\" para rodar.\n3. Botão com ícone de \"borracha\" para limpar as informações.");
         Usar.setViewportView(jTextArea2);
 
-        jTabbedPane4.addTab("Como Usar", Usar);
+        jTabbedPane4.addTab("Funcionamento", Usar);
 
         jTextPane1.setEditable(false);
         Editor.setViewportView(jTextPane1);
@@ -72,11 +78,9 @@ public class Help extends javax.swing.JFrame {
         jTextArea3.setRows(5);
         Salvar.setViewportView(jTextArea3);
 
-        jTabbedPane4.addTab("Salvar", Salvar);
+        jTabbedPane4.addTab("Extras", Salvar);
 
-        jTabbedPane1.addTab(" Primeiros Passos ", jTabbedPane4);
-
-        jTabbedPane2.addTab("tab1", jScrollPane4);
+        jTabbedPane1.addTab("Início", jTabbedPane4);
 
         InstrArea.setEditable(false);
         InstrArea.setColumns(20);
@@ -87,12 +91,42 @@ public class Help extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Instruções", Instr);
 
+        jTextArea8.setColumns(20);
+        jTextArea8.setRows(5);
+        jTextArea8.setText("\tENTRADA\n\t/\nProcessador de Macros\n\t\\\n\tIntegrador Macro-Montador\n\t\\\n\tMontador\n\t/\nLigador de Módulos\n/\t\\\nLigador\tLigador-Relocador\n\\\t/\n     Carregador\n               |\nMáquina Virtual");
+        jScrollPane4.setViewportView(jTextArea8);
+
+        jTabbedPane2.addTab("Diagrama", jScrollPane4);
+
         jTabbedPane1.addTab("SIC-XE - Instruções", jTabbedPane2);
 
-        jTabbedPane3.addTab("Sobre", Sobre);
-        jTabbedPane3.addTab("Licenças", Licencas);
-        jTabbedPane3.addTab("Comandos", Comandos);
-        jTabbedPane3.addTab("Historia", Historia);
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jTextArea4.setText("O projeto tinha como objetivo construir um simulador completo de uma máquina virtual, construindo em cima do que foi feito no trabalho 1.\n\nComponentes:\nMacro: classe auxiliar para o processamento de macros\nMemoria: classe auxiliar para a manipulação de memória\nInstrucoes: classe auxiliar, contém definição de instruções\nLabel: classe auxiliar, conta quantas vezes a label aparece\nLigador: classe auxiliar, lê todos os arquivos de entrada e os salva como variáveis, também combina tabelas de simbolos\nSave: classe auxiliar para realizar o output através da interface\nTabelaDeUso: classe auxiliar para manipulação de tabela\nTabelaDefinicoes: classe auxiliar para manipulação de tabela\nTabelaSimbolosGlobais: classe auxiliar para manipulação de tabela\nProcessadorMacros: primeiro objeto a ser chamado, define macros baseado no arquivo de entrada\nCarregador: executa instruções e manipula memória\nMontador: Utiliza das tabelas e das macros processadas para gerar um arquivo objeto, onde existem somente binários\nPrincipal: o objeto que usa todos os outros para executar o programa inteiro\nJFrame: definição da interface");
+        Sobre.setViewportView(jTextArea4);
+
+        jTabbedPane3.addTab("Descrição", Sobre);
+
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jTextArea5.setText("- Gabriel Schubert Marten\n- Luísa Borges Lima\n- Rafael Nunes Siqueira\n- Ricardo Ferreira Padilha");
+        Licencas.setViewportView(jTextArea5);
+
+        jTabbedPane3.addTab("Equipe", Licencas);
+
+        jTextArea6.setColumns(20);
+        jTextArea6.setRows(5);
+        jTextArea6.setText("- Entrada (arquivo.txt)\n- Processador de Macros\n- Integrador Macro-montador\n- Montador\n- Ligador de Módulos\n- Ligador\n- Ligador-relocador\n- Carregador\n- Máquina virtual");
+        Comandos.setViewportView(jTextArea6);
+
+        jTabbedPane3.addTab("Componentes", Comandos);
+
+        jTextArea7.setColumns(20);
+        jTextArea7.setRows(5);
+        jTextArea7.setText("SIC-XE significa \"Simplified Instructional Computer Extra Equipment ou Extra Expensive\".\n\nÉ uma versão avançada do SIC, estando tão relacionados que possuem compatibilidade ascendente.\n\nA arquitetura de uma máquina SIC-XE consiste de:\n1. Memória: 3 bytes consecutivos que formam uma \"palavra\".\n2. Registrador: 9 registradores.\n3. Formatos: Inteiros como binários, caracteres são representados usando ASCII, ponto flutuante de 48 bits.\n4. Instruções: Formato Direto (D), Indireto (In) e Imediato (Im).\n\n");
+        Historia.setViewportView(jTextArea7);
+
+        jTabbedPane3.addTab("Sobre", Historia);
 
         jTabbedPane1.addTab("SIC-XE - Info", jTabbedPane3);
 
@@ -188,6 +222,11 @@ public class Help extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea jTextArea5;
+    private javax.swing.JTextArea jTextArea6;
+    private javax.swing.JTextArea jTextArea7;
+    private javax.swing.JTextArea jTextArea8;
     private javax.swing.JTextPane jTextPane1;
     // End of variables declaration//GEN-END:variables
 }

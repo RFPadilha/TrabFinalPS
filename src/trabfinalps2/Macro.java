@@ -23,9 +23,11 @@ public class Macro {
     public void addParametros(String linha){ //recebe linha da chamada da macro      
         // Pega todas as entradas de parametros da chamada da macro
         Matcher m;
-        m = Pattern.compile("\\w\\d").matcher(linha);//procura por padrão definido pela linha da chamada
-        //\w implica em "word character"[a-z;A-Z;0-9], \d implica dígito 0-9
-        while (m.find()) {//enquanto encontrar padrão definido
+        Matcher am;
+        m = Pattern.compile("\\w*\\d").matcher(linha);//procura por padrão definido pela linha da chamada
+        am = Pattern.compile("\\W*\\w").matcher(linha);
+        //\w implica em "word character"[a-z;A-Z;0-9]
+        while (m.find() || am.find()) {//enquanto encontrar padrão definido
             String[] a;
             a = m.group().split("\n");//separa por line-break
             for (int i=0; i <= m.groupCount(); i++){
@@ -61,7 +63,7 @@ public class Macro {
             aux = this.instrucoes.get(i);//string auxiliar para a linha sendo analisada
             
             for(int j=0; j < this.parNum; j++){//para cada parâmetro
-                String a = "";
+                String a = "////";
                 int x;
                 x = j+1;
                 a = a + x;

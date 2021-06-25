@@ -28,8 +28,9 @@ public class ProcessadorMacros {
             linha = bf.readLine();//lê linha a linha
             
             while (linha != null) {//será null somente ao fim do arquivo de input
-                linha = linha.replaceAll(";.*", "");// Remove os comentários da linha se houver
+                linha = linha.replaceAll("\\*", "");// Remove os comentários da linha se houver
                 code = linha.split("\\s+");// separa a linha quando encontra qualquer quantidade de espaços
+                
                 
                 if (!(linha.contains("MACRO"))) {// Se encontrar a definicao de uma macro
                     linha = bf.readLine();
@@ -44,13 +45,14 @@ public class ProcessadorMacros {
 
                     while (!(linha.contains("MEND"))) {
                         // Remove os comentários da linha se houver
-                        linha = linha.replaceAll(";.*", "");
+                        linha = linha.replaceAll("\\*", "");
                         
                         p = Pattern.compile("&");// Procura por \ seguido de digito (sintaxe dos parametros), \d indica que procuramos por dígitos 0-9
                         m = p.matcher(linha);//verifica padrão
                         while (m.find()) {//encontra próxima ocorrência do padrão
                             String[] a;
-                            a = m.group().split("\n");//a recebe padrões encontrados, separados por line-break
+                            a = m.group().split(",");//a recebe padrões encontrados, separados por line-break
+                            
                             for (int i = 0; i <= m.groupCount(); i++) {// Adiciona todos parametros na lista
                                 int s = 0;
                                 // procura se ja existe o parametro
@@ -74,7 +76,7 @@ public class ProcessadorMacros {
                     bf.reset();// Volta para o inicio da definicao da macro, onde chamamos "bf.mark()"
                     linha = bf.readLine();
                     while (!(linha.contains("MEND"))) {//adiciona instruções à definição da macro
-                        linha = linha.replaceAll(";.*", "");// Remove os comentários da linha se houver
+                        linha = linha.replaceAll("\\*", "");// Remove os comentários da linha se houver
                         novo.addInstrucao(linha);
                         linha = bf.readLine();
                     }
@@ -98,39 +100,44 @@ public class ProcessadorMacros {
             BufferedReader bf2 = new BufferedReader(new FileReader(input + ".txt"));//lê arquivo de entrada
             FileWriter arqSaida = new FileWriter("MacroProcessada.txt");// Cria arquivo de saída
             String linha2;
-            String[] code2;//vetor que armazena instruções, registradores, labels e chamadas de macro
+            String[] code2;//vetor que armazena labels, instruções e parametros
             int f;
             linha2 = bf2.readLine();//lê input linha a linha
 
             while (linha2 != null) {//enquanto não chegar no fim do arquivo
                 
-                linha2 = linha2.replaceAll(";.*", "");// remove comentários
+                linha2 = linha2.replaceAll("\\*", "");// remove comentários
                 
                 code2 = linha2.split("\\s+");// Quebra a linha em qualquer quantidade de espaços
                 f = 0;
                 
                 if (linha2.contains("MACRO")) {// se linha contem definicao de macro
-                    while (!(linha2.contains("ENDM"))) {// ignora definicao de macro inteira
+                    while (!(linha2.contains("MEND"))) {// ignora definicao de macro inteira
                         linha2 = bf2.readLine();
                     }
                     linha2 = bf2.readLine();//le depois da definição da macro
                 } else {
                     for (Macro macro : macros) {// a cada linha, testa se existe chamada de macro
-                        if (macro.getNome().equals(code2[0])) {//encontra macro se já tiver sido definida
+                        if (macro.getNome().equals(code2[0])) {//encontra label nas definicoes de macro
                             f = 1;
                             Macro nova;// Cria um novo macro
+                            
                             nova = new Macro(macro.getNome(), macro.getNumParametros());//inicializa
                             nova.setInstrucoes(macro.getInstrucoes());//define instruções
-                            this.chamadas.add(nova);// Adiciona a lista de chamadas de macro
-
+                            
+                            
                             nova.addParametros(linha2);// adiciona parametros da chamada
+                            
                             nova.substituiParametros();// substitui parametros nas instrucoes
-
+                            
+                            System.out.println(nova.getNome() + " " + nova.getParametros());
+                            
                             ArrayList<String> expansao;
                             expansao = nova.getInstrucoes();// Pega as instrucoes atualizadas da macro expandida
 
                             for (int i = 0; i < expansao.size(); i++) {// Escreve macros expandidas no arquivo de saida
                                 arqSaida.write(expansao.get(i) + "\n");
+                                System.out.println(expansao.get(i) + "\n");
                             }
                         }
                     }
