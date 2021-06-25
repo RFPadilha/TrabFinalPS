@@ -61,7 +61,7 @@ public class Macro {
             aux = this.instrucoes.get(i);//string auxiliar para a linha sendo analisada
             
             for(int j=0; j < this.parNum; j++){//para cada parâmetro
-                String a = "\\\\";
+                String a = "";
                 int x;
                 x = j+1;
                 a = a + x;

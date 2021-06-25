@@ -46,7 +46,7 @@ public class ProcessadorMacros {
                         // Remove os comentários da linha se houver
                         linha = linha.replaceAll(";.*", "");
                         
-                        p = Pattern.compile("\\\\\\d");// Procura por \ seguido de digito (sintaxe dos parametros), \d indica que procuramos por dígitos 0-9
+                        p = Pattern.compile("&");// Procura por \ seguido de digito (sintaxe dos parametros), \d indica que procuramos por dígitos 0-9
                         m = p.matcher(linha);//verifica padrão
                         while (m.find()) {//encontra próxima ocorrência do padrão
                             String[] a;
